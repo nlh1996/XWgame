@@ -1,24 +1,24 @@
+import audio from './audio'
 cc.Class({
     extends: cc.Component,
 
     properties: {
-      btn_start: cc.Button,
-      btn_about: cc.Button,
-      btn_paihang: cc.Button,
+      btn_music: cc.Button,
+      audio: cc.AudioClip
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+      
     },
 
     start () {
-
+      audio.play(this.audio)
     },
 
-    startGame() {
-      cc.director.loadScene("main")
-    },
-
+    controlMusic() {
+      audio.change()
+    }
     // update (dt) {},
 });
