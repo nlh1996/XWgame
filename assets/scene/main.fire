@@ -58,7 +58,7 @@
     "_groupIndex": 0,
     "groupIndex": 0,
     "autoReleaseAssets": true,
-    "_id": "4d144518-b277-4129-abe1-c6d98074899c"
+    "_id": "2dcd4948-7e3c-49af-87b5-fca7b1e972ad"
   },
   {
     "__type__": "cc.Node",
@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        686.7417875851777,
+        512.8602546927438,
         0,
         0,
         0,
@@ -240,7 +240,7 @@
     "_id": "81GN3uXINKVLeW4+iKSlim"
   },
   {
-    "__type__": "750921GHupBiYXT9XOzvKP/",
+    "__type__": "a82eafwxR9GzJd0seCETGup",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -251,7 +251,7 @@
       "__id__": 6
     },
     "boxCollider": null,
-    "_id": "f6R2E9fXpOyLlW2mCSuhMa"
+    "_id": "91zsyh4i1EBq9hZVcvptT+"
   },
   {
     "__type__": "cc.CircleCollider",
@@ -354,7 +354,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "65fd7db0-32d2-4ee8-ad6f-49e87d980854"
+      "__uuid__": "db7dae7b-578a-4b14-b148-3f1ba088879e"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -371,14 +371,14 @@
     "_id": "72tkSLBM5Jr5BrsD39NhHD"
   },
   {
-    "__type__": "e2d6aAjLhFM5bC6ooqixPdY",
+    "__type__": "3125dEc9eFH1ZiWCV6NIhCS",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 7
     },
     "_enabled": true,
-    "_id": "02w+DriVVBdJSbyI1EJLiC"
+    "_id": "51huhlf4lJSIhHi+MsIVs6"
   },
   {
     "__type__": "cc.Node",
@@ -520,7 +520,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "183ba7cc-69b3-4fd7-848a-dc6cf6c45675"
+      "__uuid__": "b2ee247f-fd37-4b99-a8b6-6116ae7c5a37"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -620,7 +620,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "4551077e-3d75-4c1b-a208-9a8280d99c43"
+      "__uuid__": "a4e5f964-7065-4201-b880-e2e555299bd9"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -654,14 +654,14 @@
     "_id": "0eV2EpnVhA45NkLSOeZTtX"
   },
   {
-    "__type__": "b419916Ji5NrKCJ3XWuylNc",
+    "__type__": "ee4c9/3wb1PJqL8BGswKJlU",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 13
     },
     "_enabled": true,
-    "_id": "d5NfodgxxLq7+oS7ShQYk1"
+    "_id": "1bEXlhnWFBpb9arraFuLqg"
   },
   {
     "__type__": "cc.Canvas",

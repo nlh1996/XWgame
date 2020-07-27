@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "f3ee82db-6bf6-455d-a784-259c1c76428f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 325,
+  "height": 268,
+  "platformSettings": {},
+  "subMetas": {
+    "蝙蝠侠": {
+      "ver": "1.0.4",
+      "uuid": "75376ee2-6dc6-4062-b9ec-a3224585dd8f",
+      "rawTextureUuid": "f3ee82db-6bf6-455d-a784-259c1c76428f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 325,
+      "height": 268,
+      "rawWidth": 325,
+      "rawHeight": 268,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
