@@ -1,37 +1,32 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+      collider: cc.CircleCollider,
+      boxCollider: cc.BoxCollider
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+      // 开启碰撞检测
+      var manager = cc.director.getCollisionManager()
+      manager.enabled = true
+
+      // debug绘制
+      manager.enabledDebugDraw = true
+      //manager.enabledDrawBoundingBox = true
+    },
 
     start () {
+      this.collider.node.on(cc.Node.EventType.TOUCH_MOVE, (et) => {
+        // 返回世界坐标
+        let x = et.getLocationX() - 350
+        let y = et.getLocationY() - 667
 
+        this.collider.node.x = x
+        this.collider.node.y = y
+      })
     },
 
     // update (dt) {},

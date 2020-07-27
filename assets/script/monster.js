@@ -9,21 +9,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -31,7 +16,11 @@ cc.Class({
     // onLoad () {},
 
     start () {
-
+      let act1 = cc.moveTo(1.5, cc.v2(this.node.x+200, this.node.y))
+      let act2 = cc.moveTo(1.5, cc.v2(this.node.x-200, this.node.y))
+      let seq = cc.sequence(act1, act2)
+      let repeat = cc.repeatForever(seq)
+      this.node.runAction(repeat)
     },
 
     // update (dt) {},
