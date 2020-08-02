@@ -38,7 +38,6 @@ cc.Class({
     // update (dt) {},
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact: function (contact, selfCollider, otherCollider) {
-      console.log(11111)
     },
 
     // 只在两个碰撞体结束接触时被调用一次

@@ -1,3 +1,4 @@
+import pool from './pool'
 cc.Class({
   extends: cc.Component,
 
@@ -26,7 +27,11 @@ cc.Class({
 
   // 每次处理完碰撞体接触逻辑时被调用
   onPostSolve: function (contact, selfCollider, otherCollider) {
-  }
+  },
 
-  // update (dt) {},
+  update (dt) {
+    if (this.node.y < -600) {
+      pool.ballPool.put(this.node)
+    }
+  },
 });
