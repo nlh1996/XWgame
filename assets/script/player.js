@@ -1,11 +1,11 @@
 import pool from './pool'
+import data from './data'
 cc.Class({
   extends: cc.Component,
 
   properties: {
     ball: cc.Prefab,
     view: cc.Node,
-    num: 0,
     speed: 0,
     arrow: cc.Node,
   },
@@ -20,6 +20,10 @@ cc.Class({
   init() {
     this.index = 0
     this.dir = {}
+    for (let i = 0; i < 30; i++) {
+      let node = cc.instantiate(this.ball); // 创建节点
+      pool.ballPool.put(node) // 通过 put 接口放入对象池
+    }
   },
 
   touchMove(et) {
@@ -48,24 +52,27 @@ cc.Class({
     this.dir.y = (react.yMin + react.yMax) * 2
   },
 
+  createball() {
+    let node = null
+    if (pool.ballPool.size() > 0) {
+      node = pool.ballPool.get()
+    }else {
+      node = cc.instantiate(this.ball)
+    }
+    node.x = this.node.x + 40
+    node.y = this.node.y + 30
+    this.view.addChild(node)
+    let rb = node.getComponent(cc.RigidBody)
+    this.computeDir()
+    rb.linearVelocity = cc.v2(this.dir.x, this.dir.y)
+  },
+
   update() {
-    d = 240/this.num
+    d = 240/data.max_ball
     this.index ++
     if (this.index >= d) {
-      let node = null
       this.index = 0
-      if (pool.ballPool.size() > 0) {
-        node = pool.ballPool.get()
-      }else {
-        node = cc.instantiate(this.ball)
-        pool.ballPool.put(node)
-      }
-      node.x = this.node.x + 40
-      node.y = this.node.y + 30
-      this.view.addChild(node)
-      let rb = node.getComponent(cc.RigidBody)
-      this.computeDir()
-      rb.linearVelocity = cc.v2(this.dir.x, this.dir.y)
+      this.createball()
     }
   }
 });

@@ -1,54 +1,59 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
+import data from './data'
 cc.Class({
     extends: cc.Component,
 
     properties: {
+        downSpead: 0,
+        hp: 0,
+        label: cc.Label,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
 
-    start () {
-
+    start() {
+      switch(this.node.id) {
+        case 1:
+          this.hp = 2
+          break
+        case 2:
+          let s = data.score + 1
+          this.hp = Math.floor(Math.random()*s) + 1
+          break
+        case 3:
+      }
+      this.label.string = this.hp
     },
 
-    // ai() {
-    //   var d = 1.5
-    //   if(this.node.x > 150) {
-    //     var act1 = cc.moveTo(d, cc.v2(330, this.node.y))
-    //   }else {
-    //     var act1 = cc.moveTo(d, cc.v2(this.node.x + 150, this.node.y))
-    //   }
-    //   if (this.node.x > -200) {
-    //     var act2 = cc.moveTo(d, cc.v2(this.node.x - 150, this.node.y))
-    //   }else {
-    //     var act2 = cc.moveTo(d, cc.v2(-330, this.node.y))
-    //   }
-    //   let seq = cc.sequence(act1, act2)
-    //   let repeat = cc.repeatForever(seq)
-    //   this.node.runAction(repeat)
-    // }
-    // update (dt) {},
+    update(dt) {
+        this.node.y -= this.downSpead
+        if (this.node.y < -600 ) {
+          if (this.node.id == 2) {
+            cc.director.emit('hurt')
+          }
+          this.node.destroy()
+        }
+    },
+
     // 只在两个碰撞体开始接触时被调用一次
-    onBeginContact: function (contact, selfCollider, otherCollider) {
+    onBeginContact: function(contact, selfCollider, otherCollider) {
+      this.hp--
+        this.label.string = this.hp
+      if (this.hp <= 0) {
+        if (this.node.id == 2) {
+          cc.director.emit('score')
+        }
+        this.node.destroy()
+      }
     },
 
     // 只在两个碰撞体结束接触时被调用一次
-    onEndContact: function (contact, selfCollider, otherCollider) {
-    },
+    onEndContact: function(contact, selfCollider, otherCollider) {},
 
     // 每次将要处理碰撞体接触逻辑时被调用
-    onPreSolve: function (contact, selfCollider, otherCollider) {
-    },
+    onPreSolve: function(contact, selfCollider, otherCollider) {},
 
     // 每次处理完碰撞体接触逻辑时被调用
-    onPostSolve: function (contact, selfCollider, otherCollider) {
-    }
+    onPostSolve: function(contact, selfCollider, otherCollider) {}
 });

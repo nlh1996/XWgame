@@ -2,7 +2,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+      mst1: cc.Prefab,
+      mst2: cc.Prefab,
+      mst3: cc.Prefab,
+      view: cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -13,13 +16,23 @@ cc.Class({
     },
 
     start () {
-
+      this.index = 0
+      this.msts = [this.mst1,this.mst2,this.mst3]
     },
 
-    // 只在两个碰撞体开始接触时被调用一次
-    onBeginContact: function (contact, selfCollider, otherCollider) {
-      console.log(contact)
+    createMst(index) {
+      let node = cc.instantiate(this.msts[index])
+      node.x = -200 + 200*Math.floor(Math.random()*3)
+      node.y = 550
+      node.id = index + 1
+      this.view.addChild(node)
     },
 
-    // update (dt) {},
+    update (dt) {
+      this.index ++ 
+      if (this.index >= 120) {
+        this.index = 0
+        this.createMst(Math.floor(Math.random()*2))
+      }
+    },
 });
