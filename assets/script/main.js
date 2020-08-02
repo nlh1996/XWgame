@@ -2,8 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-      collider: cc.CircleCollider,
-      boxCollider: cc.BoxCollider
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -19,14 +18,14 @@ cc.Class({
     },
 
     start () {
-      this.collider.node.on(cc.Node.EventType.TOUCH_MOVE, (et) => {
-        // 返回世界坐标
-        let x = et.getLocationX() - 375
-        let y = et.getLocationY() - 667
-        console.log(x,y)
-        this.collider.node.x = x
-        this.collider.node.y = y
-      })
+      // this.collider.node.on(cc.Node.EventType.TOUCH_MOVE, (et) => {
+      //   // 返回世界坐标
+      //   let x = et.getLocationX() - 375
+      //   let y = et.getLocationY() - 667
+      //   console.log(x,y)
+      //   this.collider.node.x = x
+      //   this.collider.node.y = y
+      // })
     },
 
     // update (dt) {},

@@ -4,7 +4,8 @@ cc.Class({
 
     properties: {
       btn_music: cc.Button,
-      audio: cc.AudioClip
+      audio: cc.AudioClip,
+      music_sprite: cc.Sprite
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -15,10 +16,20 @@ cc.Class({
 
     start () {
       audio.play(this.audio)
+      if (audio.isPlay) {
+        this.music_sprite.node.active = true
+      }else {
+        this.music_sprite.node.active = false
+      }
     },
 
     controlMusic() {
       audio.change()
+      if (audio.isPlay) {
+        this.music_sprite.node.active = true
+      }else {
+        this.music_sprite.node.active = false
+      }
     }
     // update (dt) {},
 });
