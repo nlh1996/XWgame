@@ -32,7 +32,6 @@ cc.Class({
   update (dt) {
     if (this.node.y < -600) {
       pool.ballPool.put(this.node)
-      console.log("我回收了")
     }
   },
 });

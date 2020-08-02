@@ -15,6 +15,7 @@ cc.Class({
   onLoad() {
     this.init()
     this.node.on(cc.Node.EventType.TOUCH_MOVE, this.touchMove, this)
+    this.node.on(cc.Node.EventType.TOUCH_START, this.touchStart, this)
   },
 
   init() {
@@ -26,16 +27,20 @@ cc.Class({
     }
   },
 
+  touchStart() {
+
+  },
+  
   touchMove(et) {
     let d = et.touch.getLocation().x - et.touch.getStartLocation().x
     if (d > 0 && this.arrow.angle > 0) {
-      this.arrow.angle -= d/5
+      this.arrow.angle -= d/8
       if (this.arrow.angle < 0) {
         this.arrow.angle = 0
       }
     }
     if (d < 0 && this.arrow.angle <= 180) {
-      this.arrow.angle -= d/5
+      this.arrow.angle -= d/8
       if (this.arrow.angle > 180) {
         this.arrow.angle = 180
       }
@@ -48,8 +53,8 @@ cc.Class({
   
   computeDir() {
     let react = this.arrow.getBoundingBox()
-    this.dir.x = (react.xMin + react.xMax) * 2
-    this.dir.y = (react.yMin + react.yMax) * 2
+    this.dir.x = (react.xMin + react.xMax) * 4
+    this.dir.y = (react.yMin + react.yMax) * 4
   },
 
   createball() {
@@ -68,7 +73,7 @@ cc.Class({
   },
 
   update() {
-    d = 240/data.max_ball
+    let d = 240/data.max_ball
     this.index ++
     if (this.index >= d) {
       this.index = 0

@@ -23,13 +23,19 @@ cc.Class({
         data.life -= 1
         this.lab_life.string = data.life
         if (data.life == 0) {
-          console.log('game over')
+          cc.director.loadScene("gameover")
         }
       })
       cc.director.on('buf', ()=>{
         data.max_ball += 1
         this.lab_ballNum.string = data.max_ball
       })
+    },
+
+    onDestroy() {
+      cc.director.off('score')
+      cc.director.off('hurt')
+      cc.director.off('buf')
     },
 
     start () {

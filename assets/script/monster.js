@@ -16,14 +16,15 @@ cc.Class({
       switch(this.node.id) {
         case 1:
           this.hp = 2
+          this.label.string = this.hp
           break
         case 2:
           let s = data.score + 1
           this.hp = Math.floor(Math.random()*s) + 1
+          this.label.string = this.hp
           break
         case 3:
       }
-      this.label.string = this.hp
     },
 
     update(dt) {
@@ -38,8 +39,14 @@ cc.Class({
 
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact: function(contact, selfCollider, otherCollider) {
+      if(this.node.id == 3) {
+        cc.director.emit('buf')
+        this.node.destroy()
+        return
+      }
+
       this.hp--
-        this.label.string = this.hp
+      this.label.string = this.hp
       if (this.hp <= 0) {
         if (this.node.id == 2) {
           cc.director.emit('score')
