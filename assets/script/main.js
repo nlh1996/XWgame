@@ -8,24 +8,17 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-      // 开启碰撞检测
-      var manager = cc.director.getCollisionManager()
-      manager.enabled = true
-
-      // debug绘制
-      manager.enabledDebugDraw = true
-      //manager.enabledDrawBoundingBox = true
+      // 开启物理系统
+      cc.director.getPhysicsManager().enabled = true;
     },
 
     start () {
-      // this.collider.node.on(cc.Node.EventType.TOUCH_MOVE, (et) => {
-      //   // 返回世界坐标
-      //   let x = et.getLocationX() - 375
-      //   let y = et.getLocationY() - 667
-      //   console.log(x,y)
-      //   this.collider.node.x = x
-      //   this.collider.node.y = y
-      // })
+
+    },
+
+    // 只在两个碰撞体开始接触时被调用一次
+    onBeginContact: function (contact, selfCollider, otherCollider) {
+      console.log(contact)
     },
 
     // update (dt) {},

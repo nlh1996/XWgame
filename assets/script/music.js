@@ -11,7 +11,9 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-      
+      // cc.resources.load('sound/bgm',cc.AudioClip, (err, asset) => {
+      //   this.audio = asset
+      // })
     },
 
     start () {

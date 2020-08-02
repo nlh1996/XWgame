@@ -2,63 +2,46 @@ cc.Class({
   extends: cc.Component,
 
   properties: {
-
+    ball: cc.Prefab,
+    view: cc.Node,
+    num: 0,
+    speed: 0,
+    arrow: cc.Node,
   },
 
   // LIFE-CYCLE CALLBACKS:
 
   onLoad() {
+    this.ballPool = new cc.NodePool('ballPool')
+    this.node.on(cc.Node.EventType.TOUCH_MOVE, this.touchMove, this)
+  },
 
+  touchMove(et) {
+    let d = et.touch.getLocation().x - et.touch.getStartLocation().x
+    if (d > 0 && this.arrow.angle > 0) {
+      this.arrow.angle -= d/5
+      if (this.arrow.angle < 0) {
+        this.arrow.angle = 0
+      }
+    }
+    if (d < 0 && this.arrow.angle <= 180) {
+      this.arrow.angle -= d/5
+      if (this.arrow.angle > 180) {
+        this.arrow.angle = 180
+      }
+    }
   },
 
   start() {
-
+    let newNode = cc.instantiate(this.ball);
+    newNode.x = this.node.x + 40
+    newNode.y = this.node.y + 30
+    this.view.addChild(newNode)
+    let rb = newNode.getComponent(cc.RigidBody)
+    rb.linearVelocity = cc.v2(100, 100)
   },
   
-  /**
-   * 当碰撞产生的时候调用
-   * @param  {Collider} other 产生碰撞的另一个碰撞组件
-   * @param  {Collider} self  产生碰撞的自身的碰撞组件
-   */
-  onCollisionEnter(other, self) {
-      console.log('on collision enter')
+  update() {
 
-      // 碰撞系统会计算出碰撞组件在世界坐标系下的相关的值，并放到 world 这个属性里面
-      var world = self.world
-
-      // 碰撞组件的 aabb 碰撞框
-      var aabb = world.aabb
-
-      // 节点碰撞前上一帧 aabb 碰撞框的位置
-      var preAabb = world.preAabb
-
-      // 碰撞框的世界矩阵
-      var t = world.transform
-
-      // 以下属性为圆形碰撞组件特有属性
-      var r = world.radius
-      var p = world.position
-
-      // 以下属性为 矩形 和 多边形 碰撞组件特有属性
-      var ps = world.points
-    },
-
-    /**
-     * 当碰撞产生后，碰撞结束前的情况下，每次计算碰撞结果后调用
-     * @param  {Collider} other 产生碰撞的另一个碰撞组件
-     * @param  {Collider} self  产生碰撞的自身的碰撞组件
-     */
-    onCollisionStay(other, self) {
-      console.log('on collision stay');
-    },
-
-    /**
-     * 当碰撞结束后调用
-     * @param  {Collider} other 产生碰撞的另一个碰撞组件
-     * @param  {Collider} self  产生碰撞的自身的碰撞组件
-     */
-    onCollisionExit(other, self) {
-      console.log('on collision exit');
-    }
-  // update (dt) {},
+  }
 });
